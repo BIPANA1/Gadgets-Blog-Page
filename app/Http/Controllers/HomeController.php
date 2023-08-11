@@ -29,9 +29,15 @@ class HomeController extends Controller
     }
 
    
-    public function addProduct(){
-        $blogs = Blog::all();
-        return view('addProduct', compact('blogs'));
+    public function addProduct()
+    {
+        if (auth()->user()->role == 1) {
+            $blogs = Blog::all();
+            return view('addProduct', compact('blogs'));
+        } else {
+            return redirect('/home');
+        };
+
     }
     public function additem(){
         return view('addItem');

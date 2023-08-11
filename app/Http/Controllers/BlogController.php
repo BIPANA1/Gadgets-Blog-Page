@@ -23,6 +23,13 @@ class BlogController extends Controller
 
   public function create(Request $request)
   {
+    $request->validate([
+      'productname'=>'required',
+      'model'=>'required',
+      'price'=>'required',
+      'image'=>'required',
+    ]);
+
     try {
       $blog = new Blog();
       $blog->productname = $request->productname;

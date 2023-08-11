@@ -2,9 +2,14 @@
 @extends('layout.main')
 @section('content')
 @if(session('message'))
-<div class="alert">
+<!-- <div class="alert">
     {{session('message')}}
-</div>
+</div> -->
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        alert("{{ session('message') }}");
+    });
+</script>
 @endif
 <table class="form-register">
     <tr>

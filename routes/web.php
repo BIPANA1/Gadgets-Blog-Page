@@ -20,9 +20,7 @@ Route::get('/', [FrontendController::class, 'welcome']);
 Route::get('/description/{id}',[FrontendController::class,'description']);
 
 Auth::routes();
-
-Route::group(['middlware' => ["auth", "admin"]], function () {
-
+Route::group(['middleware' => ["auth", "admin"]], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/product', [BlogController::class, 'product']);
     Route::get('/addProduct', [HomeController::class, 'addProduct']);
@@ -31,4 +29,5 @@ Route::group(['middlware' => ["auth", "admin"]], function () {
     Route::get('/delete-post/{id}',[BlogController::class,'delete']);
     Route::get('/edit/{id}',[BlogController::class,'edit']);
     Route::post('/edit-blog/{id}',[BlogController::class,'editBlog']);
+
 });
